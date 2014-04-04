@@ -15,7 +15,7 @@ board.on("ready", function() {
     led.high();
   };
 
-  this.analogRead(0, function(delay) {
+  board.analogRead(0, function(delay) {
     board.wait(delay, function () {
       turnOn();
 
@@ -26,3 +26,4 @@ board.on("ready", function() {
     });
   });
 });
+// 
