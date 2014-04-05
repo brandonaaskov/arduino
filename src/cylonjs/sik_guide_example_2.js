@@ -18,9 +18,19 @@
   };
 
   config.work = function(my) {
+    var currentVoltage;
+    currentVoltage = 0;
     return my.arduino.analogRead(0, function(voltage) {
-      console.log('voltage', voltage);
-      return my.led.brightness();
+      var delay;
+      if (voltage === currentVoltage) {
+        return;
+      }
+      currentVoltage = voltage;
+      delay = voltage / 1000;
+      my.led.turnOn();
+      return after(delay.seconds(), function() {
+        return my.led.turnOff();
+      });
     });
   };
 

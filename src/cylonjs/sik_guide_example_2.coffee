@@ -11,11 +11,18 @@ config =
     driver: "led"
     pin: 13
 
+
 config.work = (my) ->
+  currentVoltage = 0
+
   my.arduino.analogRead 0, (voltage) ->
-    console.log 'voltage', voltage
-#    after (voltage).seconds(), -> my.led.toggle()
-    my.led.brightness()
+    return unless voltage isnt currentVoltage
+    currentVoltage = voltage
+    delay = voltage/1000
+
+    my.led.turnOn()
+    after delay.seconds(), -> my.led.turnOff()
+
 
 robot = Cylon.robot config
 robot.start()
