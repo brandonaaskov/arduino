@@ -6,16 +6,19 @@ board.on("ready", function() {
   var myAnalogPin = new five.Pin('A0');
   var myLed = new five.Led(13);
   var currentVoltage = 0;
+  var board = this;
 
-  myLed.strobe(currentVoltage);
+  board.analogRead(0, function(voltage) {
+    //delay and turn on
+    board.wait(voltage, function () {
+      console.log('on');
+      board.digitalWrite(13, 1);
 
-  myAnalogPin.read(function (voltage) {
-    setTimeout(function () {
-      myLed.off();
-    }, voltage);
-
-    setTimeout(function () {
-      myLed.on();
-    }, voltage);
+      //delay and turn off
+      board.wait(voltage, function () {
+        console.log('off');
+        board.digitalWrite(13, 0);
+      });
+    });
   });
 });
