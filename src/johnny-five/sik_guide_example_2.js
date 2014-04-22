@@ -24,7 +24,7 @@ board.on("ready", function() {
       /*
       depending on the position of the pot, it can "flicker" between two values
       so these two variables give us a threshold of +/- 1. If the change is
-      greater than that, then we fun the flasher() method.
+      greater than that, then we run the flasher() method.
       */
       var drop = currentVoltage - voltage > 1
       var spike = voltage - currentVoltage > 1;
