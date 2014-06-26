@@ -3,7 +3,7 @@ var five = require('johnny-five'),
   board = board = new five.Board();
 
 
-board.on("ready", function() {
+board.on('ready', function() {
   var myLed = new five.Led(13);
   var currentVoltage = 0;
 
@@ -22,7 +22,7 @@ board.on("ready", function() {
   this.analogRead(0, function (voltage) {
     if (currentVoltage !== voltage) {
       /*
-      depending on the position of the pot, it can "flicker" between two values
+      depending on the position of the pot, it can 'flicker' between two values
       so these two variables give us a threshold of +/- 1. If the change is
       greater than that, then we run the flasher() method.
       */

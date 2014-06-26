@@ -4,7 +4,7 @@ var five = require('johnny-five'),
   board = board = new five.Board();
 
 
-board.on("ready", function() {
+board.on('ready', function() {
   var light = new five.Led.RGB([9, 10, 11]);
   var led = {
     red: new five.Led(9),

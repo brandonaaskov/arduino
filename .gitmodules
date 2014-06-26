@@ -1,0 +1,3 @@
+[submodule "src/johnny-five/AdvancedFirmata"]
+	path = src/johnny-five/AdvancedFirmata
+	url = git@github.com:soundanalogous/AdvancedFirmata.git
